@@ -1,8 +1,8 @@
-const { startTransition } = require("react");
+// const { startTransition } = require("react");
 
 let randomNumber = (parseInt(Math.random()*100+1)) ;
 const submit = document.querySelector('#subt');
-const userinput = document.querySelector('#guessField');
+const userInput = document.querySelector('#guessField');
 const guessSlot = document.querySelector('.guesses');
 const remaining = document.querySelector('.lastResult');
 const lowOrHi = document.querySelector('.lowOrHi');
@@ -18,7 +18,7 @@ let playGame = true;
 if(playGame){
     submit.addEventListener('click', function(e){
     e.preventDefault()
-   const guess = parseInt(userinput.value)
+   const guess = parseInt(userInput.value)
    console.log(guess)
    validateGuess(guess)
     })
@@ -34,8 +34,8 @@ function validateGuess(guess){
  } else{
     prevGuess.push(guess);
     if(numguess === 11){
-        displayGuess(guess);
-        displayMessage(`game Over.random number was ${randomNumber}`);
+        displayGuess(guess)
+        displayMessage(`game Over.random number was ${randomNumber}`)
         endGame()
     } else {
         displayGuess(guess);
@@ -53,23 +53,23 @@ function checkGuess(guess){
     } else if ( guess > randomNumber){
          displayMessage(`Number is tooo high `)
     }
-};
+}
 
 function displayGuess(guess){
-    userinput.value = ''
-    guessSlot.innerHTML += `${guess}`
+    userInput.value = ''
+    guessSlot.innerHTML += `${guess}, `
     numguess++;
-    remaining.innerHTML =`${11-numguess}`
+    remaining.innerHTML = `${11-numguess}`
 
-};
+}
 
 function displayMessage(Message){
  lowOrHi.innerHTML = `<h2>${Message}</h2>`
-};
+}
 
 function endGame(){
- userinput.value = ''
- userinput.setAttribute('disabled','')
+ userInput.value = ''
+ userInput.setAttribute('disabled','')
  p.classList.add('button')
  p.innerHTML = `<h2 id = 'newGame'> start a new game</h2>`
  Startover.appendChild(p)
@@ -85,10 +85,10 @@ function newGame(){
         numguess = 1
         guessSlot.innerHTML = ''
         remaining.innerHTML = `${11-numguess}`;
-        userinput.removeAttribute('disabled')
+        userInput.removeAttribute('disabled')
         Startover.removeChild(p)
 
         playGame = true
     })
-}
+ }
 
