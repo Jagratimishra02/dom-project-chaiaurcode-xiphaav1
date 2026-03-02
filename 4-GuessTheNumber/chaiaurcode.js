@@ -33,11 +33,21 @@ function validateGuess(guess){
  } else if(guess > 100){
     alert('please enter a number less than 100')
  } else{
+
+    // 🔁 repeat check (Method 2 - loop)
+    for(let i = 0; i < prevGuess.length; i++){
+        if(prevGuess[i] === guess){
+            displayMessage("You already tried this number ❌")
+            return;   // yaha function stop ho jayega
+        }
+    }
+
     prevGuess.push(guess);
     if(numguess === 11){
         displayGuess(guess)
         displayMessage(`game Over.random number was ${randomNumber}`)
         endGame()
+        
     } else {
         displayGuess(guess);
         checkGuess(guess);
@@ -56,7 +66,7 @@ function checkGuess(guess){
     }
 }
 
-function displayGuess(guess){
+function displayGuess(guess){     //this work as clearing function
     userInput.value = ''
     guessSlot.innerHTML += `${guess}, `
     numguess++;
