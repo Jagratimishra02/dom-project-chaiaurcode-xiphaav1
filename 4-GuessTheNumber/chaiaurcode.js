@@ -1,5 +1,6 @@
 // const { startTransition } = require("react");
 
+
 let randomNumber = (parseInt(Math.random()*100+1)) ;
 const submit = document.querySelector('#subt');
 const userInput = document.querySelector('#guessField');
@@ -19,7 +20,7 @@ if(playGame){
     submit.addEventListener('click', function(e){
     e.preventDefault()
    const guess = parseInt(userInput.value)
-   console.log(guess)
+//    console.log(guess)
    validateGuess(guess)
     })
 }
